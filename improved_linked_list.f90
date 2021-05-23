@@ -234,6 +234,7 @@ MODULE improved_linked_list
 			TYPE (node), POINTER :: p, q
 
 			IF (ASSOCIATED(l%head, l%tail)) RETURN
+            IF (.NOT. ASSOCIATED(l%head)) RETURN
 
 			q => l%head
 			l%head => q%next
