@@ -7,7 +7,7 @@ Data structures in this repo:
 
 - Singly linked list (fully implemented). Some sorting algorithms will be implemented for linked list, including:
   + Selection sort (fully implemented).
-  + Quick sort (partially implemented, one test case passed).
+  + Quick sort (partially implemented, one test case passed). The defect is lacking of manipulation when call quick_sort(list) when list is empty.
   + Merge sort (partially implemented, ie. defect).
   + Radix sort (partially implemented, two test cases passed).
 - Stack (to be implemented).
