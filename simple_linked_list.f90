@@ -29,7 +29,7 @@ PROGRAM simple_linked_list
   PRINT*,'Option 1: Demo create a linked list, insert a new node to that list, remove that node'
   PRINT*,'Option 2: Demo sorting a linked list by selection sort algorithm - Manipulate data field'
   PRINT*,'Option 3: Demo sorting a linked list by selection sort algorithm - Manipulate pointer next'
-  PRINT*,'Option 4: Demo sorting a linked list by quick sort algorithm (DEFECT !!!)'
+  PRINT*,'Option 4: Demo sorting a linked list by quick sort algorithm'
   PRINT*,'Option 5: Demo sorting a linked list by merge sort algorithm (DEFECT !!!)'
   PRINT*,'Option 6: Demo sorting a linked list by radix sort algorithm'
 

@@ -236,7 +236,12 @@ MODULE improved_linked_list
 			IF (ASSOCIATED(l%head, l%tail)) RETURN
             IF (.NOT. ASSOCIATED(l%head)) RETURN
 
-			q => l%head
+			NULLIFY(l1%head)
+            NULLIFY(l2%head)
+            NULLIFY(l1%tail)
+            NULLIFY(l2%tail)
+            
+            q => l%head
 			l%head => q%next
 
 			DO WHILE (ASSOCIATED(l%head))
@@ -253,8 +258,12 @@ MODULE improved_linked_list
 
 			CALL list_quick_sort(l1)
 			CALL list_quick_sort(l2)
+            
+            IF (ASSOCIATED(l1%head) .AND. .NOT. ASSOCIATED(l1%tail)) THEN
+                CALL restore_tail(l1)
+            ENDIF
 
-			IF (ASSOCIATED(l1%head)) THEN
+			IF (ASSOCIATED(l1%head) .AND. ASSOCIATED(l1%tail)) THEN
 				l%head => l1%head
 				l1%tail%next => q
 			ELSE
@@ -406,6 +415,26 @@ MODULE improved_linked_list
 				l%tail%next => new_node
 				l%tail => new_node
 			ENDIF
+        END SUBROUTINE
+        
+        SUBROUTINE restore_tail(list)
+			! To deal with some linked lists which loose their tail during compatation
+			IMPLICIT NONE
+			TYPE (linked_list_t) :: list
+			TYPE (node), POINTER :: current
+            
+            IF (ASSOCIATED(list%tail)) RETURN
+
+			current => list%head                    ! make current as alias of list
+
+			DO
+				IF (.NOT. ASSOCIATED(current%next)) THEN
+                    list%tail => current
+                    EXIT                            ! exit if null pointer
+                ENDIF
+				current => current%next             ! make current alias of next node
+			END DO
+
 		END SUBROUTINE
 
 		SUBROUTINE tranverse_and_print(list)
