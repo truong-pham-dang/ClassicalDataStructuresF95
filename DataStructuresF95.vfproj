@@ -52,6 +52,7 @@
 		<File RelativePath=".\improved_linked_list.f90"/>
 		<File RelativePath=".\linked_list.f90"/>
 		<File RelativePath=".\list_create_insert_remove.f90"/>
+		<File RelativePath=".\list_interchange_sort.f90"/>
 		<File RelativePath=".\list_merge_sort.f90"/>
 		<File RelativePath=".\list_quick_sort.f90"/>
 		<File RelativePath=".\list_radix_sort.f90"/>

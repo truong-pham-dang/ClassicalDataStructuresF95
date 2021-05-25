@@ -10,6 +10,7 @@ MODULE improved_linked_list
 	PUBLIC :: remove_node
 	PUBLIC :: selection_sort, selection_sort_2, radix_sort
 	PUBLIC :: quick_sort, merge_sort ! defect in those two algorithms
+    PUBLIC :: interchange_sort
 
 	TYPE :: linked_list_t
 		TYPE (node), POINTER    :: head => null()
@@ -38,6 +39,10 @@ MODULE improved_linked_list
 
 	INTERFACE selection_sort
 		MODULE PROCEDURE list_selection_sort
+    END INTERFACE
+    
+    INTERFACE interchange_sort
+		MODULE PROCEDURE list_interchange_sort
 	END INTERFACE
 
 	INTERFACE selection_sort_2
@@ -285,7 +290,8 @@ MODULE improved_linked_list
 			IMPLICIT NONE
 			TYPE (linked_list_t) :: l, l1, l2
 
-			IF (ASSOCIATED(l%head, l%tail)) RETURN
+			IF (.NOT. ASSOCIATED(l%head)) RETURN
+            IF (ASSOCIATED(l%head, l%tail)) RETURN
 			CALL distribute_list(l, l1, l2)
 			CALL list_merge_sort(l1)
 			CALL list_merge_sort(l2)
@@ -325,7 +331,9 @@ MODULE improved_linked_list
 			TYPE (linked_list_t) :: l, l1, l2
 			TYPE (node), POINTER :: p
 
-			DO WHILE (ASSOCIATED(l%head) .AND. p%value <= l%head%value)
+			p => l%head
+            
+            DO WHILE (ASSOCIATED(l%head) .AND. p%value <= l%head%value)
 				p => l%head
 				l%head => p%next
 				p%next => null()
@@ -338,7 +346,30 @@ MODULE improved_linked_list
 			ELSE
 				NULLIFY(l%tail)
 			ENDIF
-		END SUBROUTINE
+        END SUBROUTINE
+        
+        SUBROUTINE list_interchange_sort(list)
+			! Interchange sort algorithm on linked list by manipulating data field
+			IMPLICIT NONE
+			TYPE (linked_list_t) :: list
+			TYPE (node), POINTER :: p, q
+            
+            p => list%head
+
+			DO WHILE (ASSOCIATED(p))
+				q => p%next
+
+				DO WHILE (ASSOCIATED(q))
+					IF (q%value < p%value) THEN
+						CALL swap(q%value, p%value)
+					ENDIF
+					q => q%next
+				ENDDO
+
+				p => p%next
+            ENDDO
+            
+        END SUBROUTINE
 
 		SUBROUTINE list_selection_sort(list)
 			! Selection sort algorithm on linked list by manipulating data field

@@ -1,4 +1,4 @@
-SUBROUTINE list_merge_sort
+SUBROUTINE list_interchange_sort
 	USE linked_list
 	USE improved_linked_list
 	IMPLICIT NONE
@@ -17,7 +17,7 @@ SUBROUTINE list_merge_sort
 
 	CALL print_list(list)
 
-	CALL merge_sort(list)
+	CALL interchange_sort(list)
 
 	PRINT *, 'Transverse the list built up and print the values after sorting:'
 
@@ -40,7 +40,7 @@ SUBROUTINE list_merge_sort
 
 	CALL print_list(list2)
 
-	CALL merge_sort(list2)
+	CALL interchange_sort(list2)
 
 	PRINT *, 'Transverse the list built up and print the values after sorting:'
 

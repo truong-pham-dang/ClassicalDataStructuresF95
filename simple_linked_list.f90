@@ -32,6 +32,7 @@ PROGRAM simple_linked_list
   PRINT*,'Option 4: Demo sorting a linked list by quick sort algorithm'
   PRINT*,'Option 5: Demo sorting a linked list by merge sort algorithm (DEFECT !!!)'
   PRINT*,'Option 6: Demo sorting a linked list by radix sort algorithm'
+  PRINT*,'Option 7: Demo sorting a linked list by interchange sort algorithm'
 
   READ*, option
   IF (option == 1) CALL list_create_insert_remove
@@ -40,6 +41,7 @@ PROGRAM simple_linked_list
   IF (option == 4) CALL list_quick_sort
   IF (option == 5) CALL list_merge_sort
   IF (option == 6) CALL list_radix_sort
+  IF (option == 7) CALL list_interchange_sort
 
 END PROGRAM simple_linked_list
 
