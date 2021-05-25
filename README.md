@@ -7,6 +7,7 @@ Data structures in this repo:
 
 - Singly linked list (fully implemented). Some sorting algorithms will be implemented for linked list, including:
   + Selection sort (fully implemented).
+  + Interchange sort (fully implemented).
   + Quick sort (fully implemented). Bug fixed: lacking of manipulation when call quick_sort(list) when list is empty; loosing tail during computation. Thanks to Visual Studio debugger (probably Intel debugger), all defects have been resolved.
   + Merge sort (partially implemented, ie. defect).
   + Radix sort (partially implemented, two test cases passed).
