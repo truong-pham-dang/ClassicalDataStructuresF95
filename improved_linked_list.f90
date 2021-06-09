@@ -10,7 +10,7 @@ MODULE improved_linked_list
 	PUBLIC :: remove_node
 	PUBLIC :: selection_sort, selection_sort_2, radix_sort
 	PUBLIC :: quick_sort, merge_sort ! defect in those two algorithms
-    PUBLIC :: interchange_sort
+        PUBLIC :: interchange_sort
 
 	TYPE :: linked_list_t
 		TYPE (node), POINTER    :: head => null()
@@ -39,9 +39,9 @@ MODULE improved_linked_list
 
 	INTERFACE selection_sort
 		MODULE PROCEDURE list_selection_sort
-    END INTERFACE
+        END INTERFACE
     
-    INTERFACE interchange_sort
+        INTERFACE interchange_sort
 		MODULE PROCEDURE list_interchange_sort
 	END INTERFACE
 
@@ -186,9 +186,9 @@ MODULE improved_linked_list
 
 			DO k = 0, 9
 				DO WHILE (ASSOCIATED(l%head))
-                    p => l%head
-                    l%head => p%next
-                    NULLIFY(p%next)
+                                        p => l%head
+                                        l%head => p%next
+                                        NULLIFY(p%next)
 					i = get_digit(p%value, k)
 					CALL add_tail(B(i), p)
 				ENDDO
@@ -210,8 +210,8 @@ MODULE improved_linked_list
 			IF (ASSOCIATED(l%head) .AND. ASSOCIATED(l1%head)) THEN
 				l%tail%next => l1%head
 				l%tail => l1%tail
-            ELSE IF (ASSOCIATED(l%head) .AND. .NOT. ASSOCIATED(l1%head)) THEN
-                RETURN
+                        ELSE IF (ASSOCIATED(l%head) .AND. .NOT. ASSOCIATED(l1%head)) THEN
+                                RETURN
 			ELSE
 				l = l1
 			ENDIF
@@ -239,14 +239,14 @@ MODULE improved_linked_list
 			TYPE (node), POINTER :: p, q
 
 			IF (ASSOCIATED(l%head, l%tail)) RETURN
-            IF (.NOT. ASSOCIATED(l%head)) RETURN
+                        IF (.NOT. ASSOCIATED(l%head)) RETURN
 
 			NULLIFY(l1%head)
-            NULLIFY(l2%head)
-            NULLIFY(l1%tail)
-            NULLIFY(l2%tail)
+                        NULLIFY(l2%head)
+                        NULLIFY(l1%tail)
+                        NULLIFY(l2%tail)
             
-            q => l%head
+                        q => l%head
 			l%head => q%next
 
 			DO WHILE (ASSOCIATED(l%head))
@@ -264,9 +264,9 @@ MODULE improved_linked_list
 			CALL list_quick_sort(l1)
 			CALL list_quick_sort(l2)
             
-            IF (ASSOCIATED(l1%head) .AND. .NOT. ASSOCIATED(l1%tail)) THEN
-                CALL restore_tail(l1)
-            ENDIF
+                        IF (ASSOCIATED(l1%head) .AND. .NOT. ASSOCIATED(l1%tail)) THEN
+                            CALL restore_tail(l1)
+                        ENDIF
 
 			IF (ASSOCIATED(l1%head) .AND. ASSOCIATED(l1%tail)) THEN
 				l%head => l1%head
@@ -291,7 +291,7 @@ MODULE improved_linked_list
 			TYPE (linked_list_t) :: l, l1, l2
 
 			IF (.NOT. ASSOCIATED(l%head)) RETURN
-            IF (ASSOCIATED(l%head, l%tail)) RETURN
+                        IF (ASSOCIATED(l%head, l%tail)) RETURN
 			CALL distribute_list(l, l1, l2)
 			CALL list_merge_sort(l1)
 			CALL list_merge_sort(l2)
@@ -333,7 +333,7 @@ MODULE improved_linked_list
 
 			p => l%head
             
-            DO WHILE (ASSOCIATED(l%head) .AND. p%value <= l%head%value)
+                        DO WHILE (ASSOCIATED(l%head) .AND. p%value <= l%head%value)
 				p => l%head
 				l%head => p%next
 				p%next => null()
@@ -346,15 +346,15 @@ MODULE improved_linked_list
 			ELSE
 				NULLIFY(l%tail)
 			ENDIF
-        END SUBROUTINE
+                END SUBROUTINE
         
-        SUBROUTINE list_interchange_sort(list)
+                SUBROUTINE list_interchange_sort(list)
 			! Interchange sort algorithm on linked list by manipulating data field
 			IMPLICIT NONE
 			TYPE (linked_list_t) :: list
 			TYPE (node), POINTER :: p, q
             
-            p => list%head
+                        p => list%head
 
 			DO WHILE (ASSOCIATED(p))
 				q => p%next
@@ -367,9 +367,9 @@ MODULE improved_linked_list
 				ENDDO
 
 				p => p%next
-            ENDDO
+                        ENDDO
             
-        END SUBROUTINE
+                END SUBROUTINE
 
 		SUBROUTINE list_selection_sort(list)
 			! Selection sort algorithm on linked list by manipulating data field
@@ -446,23 +446,23 @@ MODULE improved_linked_list
 				l%tail%next => new_node
 				l%tail => new_node
 			ENDIF
-        END SUBROUTINE
+                END SUBROUTINE
         
-        SUBROUTINE restore_tail(list)
+                SUBROUTINE restore_tail(list)
 			! To deal with some linked lists which loose their tail during compatation
 			IMPLICIT NONE
 			TYPE (linked_list_t) :: list
 			TYPE (node), POINTER :: current
             
-            IF (ASSOCIATED(list%tail)) RETURN
+                        IF (ASSOCIATED(list%tail)) RETURN
 
 			current => list%head                    ! make current as alias of list
 
 			DO
 				IF (.NOT. ASSOCIATED(current%next)) THEN
-                    list%tail => current
-                    EXIT                            ! exit if null pointer
-                ENDIF
+                                    list%tail => current
+                                    EXIT                            ! exit if null pointer
+                                ENDIF
 				current => current%next             ! make current alias of next node
 			END DO
 

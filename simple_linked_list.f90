@@ -35,13 +35,22 @@ PROGRAM simple_linked_list
   PRINT*,'Option 7: Demo sorting a linked list by interchange sort algorithm'
 
   READ*, option
-  IF (option == 1) CALL list_create_insert_remove
-  IF (option == 2) CALL list_selection_sort
-  IF (option == 3) CALL list_selection_sort_2
-  IF (option == 4) CALL list_quick_sort
-  IF (option == 5) CALL list_merge_sort
-  IF (option == 6) CALL list_radix_sort
-  IF (option == 7) CALL list_interchange_sort
+  SELECT CASE (option)
+      CASE (1) 
+          CALL list_create_insert_remove
+      CASE (2) 
+          CALL list_selection_sort
+      CASE (3) 
+          CALL list_selection_sort_2
+      CASE (4) 
+          CALL list_quick_sort
+      CASE (5) 
+          CALL list_merge_sort
+      CASE (6) 
+          CALL list_radix_sort
+      CASE (7) 
+          CALL list_interchange_sort
+  END SELECT
 
 END PROGRAM simple_linked_list
 
