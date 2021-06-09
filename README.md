@@ -1,5 +1,5 @@
 # ClassicalDataStructuresF95
-A folk of my archived repo [DataStructuresF95](https://github.com/truongd8593/DataStructuresF95), but using Visual Studio 2019 project and Intel Fortran compiler (part of Intel OneAPI HPC Toolkit which is free for any developer). This allows debugging with Intel debugger, thus enhances production.
+A fork of my archived repo [DataStructuresF95](https://github.com/truongd8593/DataStructuresF95), but using Visual Studio 2019 project and Intel Fortran compiler (part of Intel OneAPI HPC Toolkit which is free for any developer). This allows debugging with Intel debugger, thus enhances production.
 
 Classical data structures written in F95 and strictly conformant to F95 standard. 
 
