@@ -333,7 +333,7 @@ MODULE improved_linked_list
 
 			p => l%head
             
-            DO WHILE (ASSOCIATED(l%head) .AND. p%value <= l%head%value)
+                DO WHILE (ASSOCIATED(l%head) .AND. p%value <= l%head%value)
 				p => l%head
 				l%head => p%next
 				p%next => null()
@@ -445,16 +445,16 @@ MODULE improved_linked_list
 			ELSE
 				l%tail%next => new_node
 				l%tail => new_node
-            ENDIF
-        END SUBROUTINE
+                        ENDIF
+                END SUBROUTINE
         
-        SUBROUTINE restore_tail(list)
+                SUBROUTINE restore_tail(list)
 			! To deal with some linked lists which loose their tail during compatation
 			IMPLICIT NONE
 			TYPE (linked_list_t) :: list
 			TYPE (node), POINTER :: current
             
-            IF (ASSOCIATED(list%tail)) RETURN
+                        IF (ASSOCIATED(list%tail)) RETURN
 
 			current => list%head                    ! make current as alias of list
 
@@ -480,14 +480,16 @@ MODULE improved_linked_list
 			DO
 				IF (.NOT. ASSOCIATED(current)) EXIT ! exit if null pointer
                 
-                IF (.NOT. ASSOCIATED(current%next)) THEN
-                    WRITE(*, "(1x, i0, a)", ADVANCE = "NO"), current%value, "]"
-                ELSE
-					WRITE(*, "(1x, i0, a)", ADVANCE = "NO"), current%value, ","
-                ENDIF
+                                IF (.NOT. ASSOCIATED(current%next)) THEN
+                                    WRITE(*, "(1x, i0, a)", ADVANCE = "NO"), current%value, "]"
+                                ELSE
+                                    WRITE(*, "(1x, i0, a)", ADVANCE = "NO"), current%value, ","
+                                ENDIF
                 
 				current => current%next             ! make current alias of next node
 			END DO
+                        
+                        WRITE(*, *)
 
 		END SUBROUTINE
 
