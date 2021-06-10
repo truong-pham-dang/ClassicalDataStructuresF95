@@ -10,7 +10,7 @@ MODULE improved_linked_list
 	PUBLIC :: remove_node
 	PUBLIC :: selection_sort, selection_sort_2, radix_sort
 	PUBLIC :: quick_sort, merge_sort ! defect in those two algorithms
-    PUBLIC :: interchange_sort
+        PUBLIC :: interchange_sort
 
 	TYPE :: linked_list_t
 		TYPE (node), POINTER    :: head => null()
