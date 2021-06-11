@@ -475,15 +475,15 @@ MODULE improved_linked_list
 
 			current => list%head                    ! make current as alias of list
 
-			WRITE(*, "(A)", ADVANCE = "NO"), "["
+			WRITE(*, "(A)", ADVANCE = "NO") "["
 
 			DO
 				IF (.NOT. ASSOCIATED(current)) EXIT ! exit if null pointer
                 
                                 IF (.NOT. ASSOCIATED(current%next)) THEN
-                                    WRITE(*, "(1x, i0, a)", ADVANCE = "NO"), current%value, "]"
+                                    WRITE(*, "(1x, i0, a)", ADVANCE = "NO") current%value, "]"
                                 ELSE
-                                    WRITE(*, "(1x, i0, a)", ADVANCE = "NO"), current%value, ","
+                                    WRITE(*, "(1x, i0, a)", ADVANCE = "NO") current%value, ","
                                 ENDIF
                 
 				current => current%next             ! make current alias of next node
