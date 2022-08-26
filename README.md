@@ -11,7 +11,7 @@ Data structures in this repo:
   + Quick sort (fully implemented). Bug fixed: lacking of manipulation when call quick_sort(list) when list is empty; loosing tail during computation. Thanks to Visual Studio debugger (probably Intel debugger), all defects have been resolved.
   + Merge sort (partially implemented, ie. defect).
   + Radix sort (partially implemented, two test cases passed).
-- Stack (to be implemented).
+- Stack (partially implemented). Only linked list representation of stack is implemented. See [mdl_stack.f90](https://github.com/truongd8593/CVFplayground/blob/master/mdl_stack.f90) in repo [CVFplayground](https://github.com/truongd8593/CVFplayground)
 - Queue (to be implemented).
 
 Reference:
